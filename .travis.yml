@@ -31,4 +31,4 @@ script:
     || (echo 'Idempotence test: fail' && exit 1)
 
   # Tests to make sure MySQL is running and responds.
-
+  - mysql -V

@@ -19,4 +19,4 @@ galaxy_info:
     - all    
   categories:
     - web
-    - db
+    - database:sql

@@ -1,4 +1,4 @@
 ---
-- hosts: ansible-role-apache.vagrant
+- hosts: ansible-role-mysql.vagrant
   roles:
-    - ansible-role-mysql
+    - mauricios.MySQL

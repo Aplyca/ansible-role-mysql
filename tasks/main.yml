@@ -1,26 +1,12 @@
 ---
-- name: Update apt cache
-  sudo: yes
-  apt:
-    update_cache: yes
-    cache_valid_time: 86400
+- name: Include OS-specific variables.
+  include_vars: "{{ ansible_os_family }}.yml"
+  
+- include: setup-RedHat.yml
+  when: ansible_os_family == 'RedHat'
 
-- name: Ensure MySQL client is present using yum
-  sudo: yes
-  yum: name={{ item }} state=present
-  with_items:
-  - mysql-client
-  when: ansible_os_family == 'RedHat' and {{ mysql["client"]["install"] }}
-
-- name: Ensure MySQL client present using apt
-  sudo: yes
-  apt: name={{ item }} state=present
-  with_items:
-  - mysql-client
-  when: ansible_os_family == 'Debian' and {{ mysql["client"]["install"] }}
-
-- debug: msg="MySQL server installation not enabled"
-  when: not mysql["server"]["install"]
-
-- include: server.yml
-  when: mysql["server"]["install"]
+- include: setup-Debian.yml
+  when: ansible_os_family == 'Debian'  
+  
+- include: setup-server.yml
+  when: mysql.install_server  

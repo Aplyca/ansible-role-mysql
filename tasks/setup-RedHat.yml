@@ -1,0 +1,19 @@
+---
+- name: Add the MySQL package repo to yum
+  sudo: yes
+  yum: 
+    name: http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm
+
+- name: Ensure MySQL client present using yum
+  sudo: yes
+  yum: 
+    name: "{{ mysql['packages']['client'] }}"
+    state: present
+  
+- name: Ensure MySQL server present using yum
+  sudo: yes
+  yum: 
+    name: "{{ mysql['packages']['server'] }}"
+    state: present
+  notify: start mysql   
+  when: mysql.install_server  

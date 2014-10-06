@@ -1,0 +1,7 @@
+---
+mysql:
+  packages:
+    client: mysql-community-client
+    server: mysql-community-server
+  conf_dir: /usr/etc
+  service: mysqld

@@ -1,6 +1,5 @@
 # {{ ansible_managed }}
 
-# TODO: Complement using https://github.com/Ansibles/mysql/blob/master/templates/etc_mysql_my.cnf.j2 and https://www.assembla.com/code/aplyca/git/nodes/master/server/mysql/my.cnf
 # TODO: Complenet default vars
 
 [client]
@@ -8,6 +7,7 @@ port = {{ mysql["cnf"]["client"]["port"] | default("3306") }}
 
 [mysqld]
 bind-address = {{ mysql["cnf"]["mysqld"]["bind-address"] | default("127.0.0.1")}}
+port = {{ mysql["cnf"]["client"]["port"] | default("3306") }}
 
 # * Fine Tuning
 key_buffer = {{ mysql["cnf"]["mysqld"]["key_buffer"] | default("16M") }}

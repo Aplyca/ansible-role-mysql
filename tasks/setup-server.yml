@@ -1,0 +1,11 @@
+---
+- name: Update MySQL Configuration
+  sudo: yes
+  template:
+    src: "etc/mysql/conf.d/my.cnf.j2"
+    dest: "{{ mysql['conf_dir'] }}/my.cnf"
+    mode: 0644
+  notify:
+    - restart mysql
+
+# TODO: Use a process manager, see: http://blog.crocodoc.com/post/48703468992/process-managers-the-good-the-bad-and-the-ugly

@@ -1,0 +1,18 @@
+---
+- name: Ensure MySQL client is present using apt
+  sudo: yes
+  apt: 
+    name: "{{ mysql['packages']['client'] }}"
+    state: present
+    update_cache: yes
+    cache_valid_time: 86400
+
+- name: Ensure MySQL server is present using apt
+  sudo: yes
+  apt: 
+    name: "{{ mysql['packages']['server'] }}"
+    state: present
+    update_cache: yes
+    cache_valid_time: 86400
+  notify: start mysql  
+  when: mysql.install_server
