@@ -1,0 +1,13 @@
+---
+mysql:
+  server:
+    install: true
+  client:
+    install: true
+  cnf:
+    client:
+      port: 3306
+    mysqld:
+      bind-address: 127.0.0.1
+    mysqldump:
+      max_allowed_packet: 16M

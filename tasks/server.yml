@@ -1,0 +1,32 @@
+---
+- name: Ensure MySQL server is present using yum
+  sudo: yes
+  yum: name={{ item }} state=present
+  with_items:
+  - mysql-server
+  when: ansible_os_family == 'RedHat' and {{ mysql["server"]["install"] }}
+
+- name: Ensure MySQL server present using apt
+  sudo: yes
+  apt: name={{ item }} state=present
+  with_items:
+  - mysql-server
+  when: ansible_os_family == 'Debian' and {{ mysql["server"]["install"] }}
+
+- name: Ensure MySQL is started and set to run on startup.
+  sudo: yes
+  service:
+    name: mysql
+    state: started
+    enabled: yes
+
+- name: Update MySQL Configuration
+  sudo: yes
+  template:
+    src: etc/mysql/conf.d/custom.cnf.j2
+    dest: /etc/mysql/conf.d/custom.cnf
+    mode: 0644
+  notify:
+    - restart mysql
+
+# TODO: Use a process manager, see: http://blog.crocodoc.com/post/48703468992/process-managers-the-good-the-bad-and-the-ugly

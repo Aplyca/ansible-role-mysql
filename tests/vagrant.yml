@@ -1,0 +1,4 @@
+---
+- hosts: ansible-role-apache.vagrant
+  roles:
+    - ansible-role-mysql
