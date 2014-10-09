@@ -19,5 +19,6 @@
   when: mysql.install_server  
 
 - name: Set mysql to autostart on boot
-  command: chkconfig mysqld on
-  when: mysql.install_server  
+  sudo: yes
+  command: chkconfig --level 2345 mysqld on
+  when: mysql.install_server
