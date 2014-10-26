@@ -8,11 +8,13 @@ env:
 before_install:
   - uname -a
   - sudo apt-get update -qq
+  - ln -s ansible-role-mysql ../mauricios.MySQL
 
 install:
   - sudo apt-get install -y curl
 
   # Install Ansible.
+  - sudo pip install paramiko PyYAML jinja2 httplib2
   - sudo pip install ansible
 
 script:
