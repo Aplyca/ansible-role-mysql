@@ -1,6 +1,7 @@
 # Ansible Role: MySQL
 
 [![Build Status](https://travis-ci.org/Aplyca/ansible-role-mysql.svg?branch=master)](https://travis-ci.org/Aplyca/ansible-role-mysql)
+[![Circle CI](https://circleci.com/gh/Aplyca/ansible-role-mysql.png?style=badge)](https://circleci.com/gh/Aplyca/ansible-role-mysql)
 
 Ansible Role that installs an configure MySQL on Debian/Ubuntu.
 
