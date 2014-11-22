@@ -1,24 +1,24 @@
 ---
 - name: Add the MySQL package repo to yum
   sudo: yes
-  yum: 
+  yum:
     name: http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm
 
 - name: Ensure MySQL client present using yum
   sudo: yes
-  yum: 
+  yum:
     name: "{{ mysql['packages']['client'] }}"
     state: present
-  
+
 - name: Ensure MySQL server present using yum
   sudo: yes
-  yum: 
+  yum:
     name: "{{ mysql['packages']['server'] }}"
     state: present
-  notify: start mysql   
-  when: mysql.install_server  
+  notify: start mysql
+  when: mauricios_mysql_defaults.install_server  
 
 - name: Set mysql to autostart on boot
   sudo: yes
   command: chkconfig --level 2345 mysqld on
-  when: mysql.install_server
+  when: mauricios_mysql_defaults.install_server

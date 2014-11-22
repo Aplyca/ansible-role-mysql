@@ -1,5 +1,5 @@
 ---
-mysql:
+mauricios_mysql_defaults:
   install_server: True
   cnf:
     client:

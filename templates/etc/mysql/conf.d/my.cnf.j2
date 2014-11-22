@@ -3,14 +3,14 @@
 # TODO: Complenet default vars
 
 [client]
-port = {{ mysql["cnf"]["client"]["port"] | default("3306") }}
+port = {{ mauricios_mysql_defaults["cnf"]["client"]["port"] | default("3306") }}
 
 [mysqld]
-bind-address = {{ mysql["cnf"]["mysqld"]["bind-address"] | default("127.0.0.1")}}
-port = {{ mysql["cnf"]["client"]["port"] | default("3306") }}
+bind-address = {{ mauricios_mysql_defaults["cnf"]["mysqld"]["bind-address"] | default("127.0.0.1")}}
+port = {{ mauricios_mysql_defaults["cnf"]["client"]["port"] | default("3306") }}
 
 # * Fine Tuning
-key_buffer = {{ mysql["cnf"]["mysqld"]["key_buffer"] | default("16M") }}
+key_buffer = {{ mauricios_mysql_defaults["cnf"]["mysqld"]["key_buffer"] | default("16M") }}
 
 [mysqldump]
-max_allowed_packet = {{ mysql["cnf"]["mysqldump"]["max_allowed_packet"] | default("16M") }}
+max_allowed_packet = {{ mauricios_mysql_defaults["cnf"]["mysqldump"]["max_allowed_packet"] | default("16M") }}
