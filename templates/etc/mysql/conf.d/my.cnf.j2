@@ -1,16 +1,23 @@
 # {{ ansible_managed }}
 
-# TODO: Complenet default vars
-
 [client]
-port = {{ mysql["cnf"]["client"]["port"] | default("3306") }}
+{%- set x = mysql.cnf.client-%} 
+{%- for k, v in x.items()  %} 
+{{ k }} = {{ v }}
+{%- endfor %}
 
+
+# mysql settings
 [mysqld]
-bind-address = {{ mysql["cnf"]["mysqld"]["bind-address"] | default("127.0.0.1")}}
-port = {{ mysql["cnf"]["client"]["port"] | default("3306") }}
+{%- set x = mysql.cnf.mysqld  -%} 
+{%- for k, v in x.items()  %} 
+{{ k }} = {{ v }}
+{%- endfor %}
 
-# * Fine Tuning
-key_buffer = {{ mysql["cnf"]["mysqld"]["key_buffer"] | default("16M") }}
 
+# set parameters for mysqldump
 [mysqldump]
-max_allowed_packet = {{ mysql["cnf"]["mysqldump"]["max_allowed_packet"] | default("16M") }}
+{%- set x = mysql.cnf.mysqldump  -%} 
+{%- for k, v in x.items()  %} 
+{{ k }} = {{ v }}
+{%- endfor %}
