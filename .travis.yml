@@ -6,7 +6,7 @@ env:
   - PLAYBOOK=playbook.yml
 
 before_install:
-  - ln -s ansible-role-mysql ../mauricios.MySQL
+  - ln -s ansible-role-mysql ../aplyca.MySQL
 
 install:
   # Install Ansible.
