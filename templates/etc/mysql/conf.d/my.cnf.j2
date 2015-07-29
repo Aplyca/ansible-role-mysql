@@ -1,11 +1,10 @@
 # {{ ansible_managed }}
 
 [client]
-{%- set x = mysql.cnf.client-%} 
+{%- set x = mysql.cnf.client -%} 
 {%- for k, v in x.items()  %} 
 {{ k }} = {{ v }}
 {%- endfor %}
-
 
 # mysql settings
 [mysqld]
@@ -13,7 +12,6 @@
 {%- for k, v in x.items()  %} 
 {{ k }} = {{ v }}
 {%- endfor %}
-
 
 # set parameters for mysqldump
 [mysqldump]
