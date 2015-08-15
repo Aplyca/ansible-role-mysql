@@ -16,9 +16,11 @@
     password: "{{ item.password }}"
     priv: "{{ item.priv }}"
     state: "{{ item.state | default('present') }}"
+    host: "{{ item.host | default('localhost') }}"
     check_implicit_admin: yes
   with_items: mysql["users"]
   when: mysql["users"] is defined
+  no_log: True
 
 - name: Make sure DBs are present
   mysql_db:
