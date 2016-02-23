@@ -24,7 +24,6 @@
 
 - name: Make sure DBs are present
   mysql_db:
-    state: present
     name: "{{ item.name }}"
     state: "{{ item.state | default('present') }}"
   with_items: mysql["databases"]
