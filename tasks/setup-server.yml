@@ -1,12 +1,11 @@
 ---
 - name: Update MySQL Configuration
-  sudo: yes
+  become: yes
   template:
     src: "etc/mysql/conf.d/my.cnf.j2"
-    dest: "{{ mysql['conf_dir'] }}/my.cnf"
+    dest: "{{ mysql.conf_dir }}/my.cnf"
     mode: 0644
-  notify:
-    - restart mysql
+  notify: restart mysql
 
 # TODO: Use a process manager, see: http://blog.crocodoc.com/post/48703468992/process-managers-the-good-the-bad-and-the-ugly
 
@@ -18,13 +17,13 @@
     state: "{{ item.state | default('present') }}"
     host: "{{ item.host | default('localhost') }}"
     check_implicit_admin: yes
-  with_items: mysql["users"]
-  when: mysql["users"] is defined
+  with_items: "{{ mysql.users }}"
+  when: mysql.users is defined
   no_log: True
 
 - name: Make sure DBs are present
   mysql_db:
     name: "{{ item.name }}"
     state: "{{ item.state | default('present') }}"
-  with_items: mysql["databases"]
-  when: mysql["databases"] is defined
+  with_items: "{{ mysql.databases }}"
+  when: mysql.databases is defined
