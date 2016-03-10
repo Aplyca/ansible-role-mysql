@@ -1,13 +1,13 @@
 ---
 - name: start mysql
-  sudo: yes
+  become: yes
   service: 
     name: "{{ mysql['service'] }}"
     state: started
     enabled: yes
     
 - name: restart mysql
-  sudo: yes
+  become: yes
   service: 
     name: "{{ mysql['service'] }}"
     state: restarted
