@@ -10,6 +10,7 @@
 # TODO: Use a process manager, see: http://blog.crocodoc.com/post/48703468992/process-managers-the-good-the-bad-and-the-ugly
 
 - name: Create DB users
+  become: yes
   mysql_user:
     name: "{{ item.name }}"
     password: "{{ item.password }}"
@@ -18,12 +19,13 @@
     host: "{{ item.host | default('localhost') }}"
     check_implicit_admin: yes
   with_items: "{{ mysql.users }}"
-  when: mysql.users is defined
   no_log: True
 
 - name: Make sure DBs are present
+  become: yes
   mysql_db:
     name: "{{ item.name }}"
     state: "{{ item.state | default('present') }}"
+    encoding: "utf8"
+    collation: "utf8_general_ci"
   with_items: "{{ mysql.databases }}"
-  when: mysql.databases is defined
