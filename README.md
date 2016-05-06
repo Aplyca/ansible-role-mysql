@@ -33,19 +33,16 @@ None.
 
 ## Testing
 
-Use Vagrant to test the role:
+### Vagrant
+* You can use Vagrant to set up and provision a VM in order to run tests.
+* To know more about Vagrant: http://www.vagrantup.com
+  And Vagrant with Ansible: http://docs.vagrantup.com/v2/provisioning/ansible.html
 
 ```bash
-cd tests;
-vagrant box add ubuntu/trusty64;
-vagrant up;
+tests/vagrant.sh
 ```
-You should see a MySQL server on localhost:3306
+### Docker
 
-## License
-
-MIT / BSD
-
-## Author Information
-
-Mauricio Sánchez from Aplyca SAS (http://www.aplyca.com)
+```bash
+tests/docker.sh
+```

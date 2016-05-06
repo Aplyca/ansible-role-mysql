@@ -19,7 +19,7 @@
     host: "{{ item.host | default('localhost') }}"
     check_implicit_admin: yes
   with_items: "{{ mysql.users }}"
-  #no_log: True
+  no_log: True
   tags: mysqlusers
 
 - name: Make sure DBs are present
