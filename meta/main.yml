@@ -2,7 +2,7 @@
 dependencies: []
 
 galaxy_info:
-  author: aplyca
+  author: Aplyca
   description: MySQL 5.x for Debian/Ubuntu/RedHat/CentOS.
   company: "Aplyca SAS"
   license: "license (BSD, MIT)"
@@ -16,7 +16,7 @@ galaxy_info:
     - all
   - name: CentOS
     versions:
-    - all    
+    - all
   categories:
     - web
     - database:sql
