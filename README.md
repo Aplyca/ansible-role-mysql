@@ -23,6 +23,8 @@ dependencies:
   - { role: aplyca.MySQL }
 ```
 
+Use `merge` hash behaviour for variables like dictionaries in Python. You can set this configuration by adding the setting `hash_behaviour=merge` to the `ansible.cfg` file which should be placed in the same directory where you are executing ansible-playbook command. See the docs for more info: http://docs.ansible.com/ansible/intro_configuration.html#hash-behaviour or see the example here: https://github.com/Aplyca/ansible-role-mysql/blob/master/ansible.cfg
+
 ## Role Variables
 
 See default variables: https://github.com/Aplyca/ansible-role-mysql/blob/master/defaults/main.yml
