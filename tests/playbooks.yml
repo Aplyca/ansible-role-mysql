@@ -1,8 +1,0 @@
----
-- hosts: all
-  tasks:
-    - name: Test if MySQL is installed
-      shell: "mysql -V"
-    - name: Test if MySQL is running
-      become: yes
-      shell: "mysqladmin status"      

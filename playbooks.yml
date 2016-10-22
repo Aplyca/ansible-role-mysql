@@ -1,4 +1,11 @@
 ---
-- hosts: all
+- name: Installs MySQL
+  hosts: all
   roles:
-    - Aplyca.MySQL
+    - { role: Aplyca.MySQL, tags: ["mysql"] }
+  post_tasks:
+    - name: Test if MySQL is installed
+      shell: "mysql -V"
+    - name: Test if MySQL is running
+      become: yes
+      shell: "mysqladmin status"
