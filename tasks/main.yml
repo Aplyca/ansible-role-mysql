@@ -11,5 +11,7 @@
 - include: setup-Debian.yml
   when: ansible_os_family == 'Debian'  
   
-- include: setup-server.yml
+- block:
+    - name: Include tasks to install server
+      include: setup-server.yml
   when: mysql.install_server  
