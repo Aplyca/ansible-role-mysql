@@ -19,7 +19,7 @@
 - name: Ensure Python MySQL lib is present using apt
   become: yes
   apt:
-    name: "python-mysqldb"
+    name: "{{ mysql.packages.python }}"
     state: present
     update_cache: yes
     cache_valid_time: 86400

@@ -4,14 +4,18 @@
 
 - name: Include OS-specific variables.
   include_vars: "{{ ansible_os_family }}.yml"
-  
+
+- name: Include Ubuntu 16 specific variables.
+  include_vars: "Ubuntu-16.yml"
+  when: ansible_distribution == 'Ubuntu' and ansible_distribution_version >= '16'
+
 - include: setup-RedHat.yml
   when: ansible_os_family == 'RedHat'
 
 - include: setup-Debian.yml
-  when: ansible_os_family == 'Debian'  
-  
+  when: ansible_os_family == 'Debian'
+
 - block:
     - name: Include tasks to install server
       include: setup-server.yml
-  when: mysql.install_server  
+  when: mysql.install_server
