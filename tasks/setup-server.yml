@@ -5,7 +5,7 @@
     src: "my.cnf.j2"
     dest: "{{ mysql.conf_dir }}/my.cnf"
     mode: 0644
-  notify: restart mysql 
+  notify: restart mysql
 
 # TODO: Use a process manager, see: http://blog.crocodoc.com/post/48703468992/process-managers-the-good-the-bad-and-the-ugly
 
@@ -13,13 +13,13 @@
   become: yes
   mysql_user:
     name: "{{ item.name }}"
-    password: "{{ item.password }}"
-    priv: "{{ item.priv }}"
+    password: "{{ item.password | default() }}"
+    priv: "{{ item.priv  | default('') }}"
     state: "{{ item.state | default('present') }}"
     host: "{{ item.host | default('localhost') }}"
     check_implicit_admin: yes
   with_items: "{{ mysql.users }}"
-  no_log: True
+  no_log: False
   tags: mysqlusers
 
 - name: Make sure DBs are present

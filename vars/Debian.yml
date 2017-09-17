@@ -1,8 +1,7 @@
 ---
 mysql:
   packages:
-    client: mysql-client
-    server: mysql-server
-    python: python-mysqldb
+    python:
+      - python-mysqldb
   conf_dir: /etc/mysql/conf.d
   service: mysql

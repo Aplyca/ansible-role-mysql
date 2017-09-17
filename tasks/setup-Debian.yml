@@ -19,8 +19,9 @@
 - name: Ensure Python MySQL lib is present using apt
   become: yes
   apt:
-    name: "{{ mysql.packages.python }}"
+    name: "{{ item }}"
     state: present
     update_cache: yes
     cache_valid_time: 86400
+  with_items: "{{ mysql.packages.python }}"
   when: mysql.install_server

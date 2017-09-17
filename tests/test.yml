@@ -1,7 +1,7 @@
 ---
 mysql:
   users:
-    - name: "test"
-      password: "test"
+    - name: test
+      password: test
       priv: "`test\\_%`.*:ALL,GRANT"
-      host: "localhost"
+      host: localhost

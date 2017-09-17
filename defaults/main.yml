@@ -1,6 +1,9 @@
 ---
 mysql:
   install_server: True
+  packages:
+    client: mysql-client
+    server: mysql-server
   cnf:
     client:
       port: 3306

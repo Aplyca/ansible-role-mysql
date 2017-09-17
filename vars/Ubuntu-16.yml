@@ -1,4 +1,6 @@
 ---
 mysql:
   packages:
-    python: python3-mysqldb
+    python:
+      - python-mysqldb
+      - python3-mysqldb
