@@ -2,8 +2,8 @@
 - name: Update MySQL Configuration
   become: yes
   template:
-    src: "my.cnf.j2"
-    dest: "{{ mysql.conf_dir }}/my.cnf"
+    src: "zz_override.cnf.j2"
+    dest: "{{ mysql.conf_dir }}/zz_override.cnf"
     mode: 0644
   notify: restart mysql
 

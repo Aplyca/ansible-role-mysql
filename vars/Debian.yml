@@ -3,5 +3,5 @@ mysql:
   packages:
     python:
       - python-mysqldb
-  conf_dir: /etc/mysql/conf.d
+  conf_dir: /etc/mysql/mysql.conf.d
   service: mysql
